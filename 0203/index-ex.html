@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./vue.js"></script>
+    <title>Vue.JS</title>
+  </head>
+
+  <body>
+    <div id="app">
+
+        <p>UserId: {{acoes.id}}</p>
+        <p>Título: {{acoes.title}}</p>
+        <button @click="puxarAcoes">Puxar Ações</button>
+
+    </div>        
+    <script>
+      const vm = new Vue({
+          el: "#app",
+          data: {
+              acoes: ""
+          },
+          methods: {
+              puxarAcoes(){
+                  fetch("https://jsonplaceholder.typicode.com/posts/7")
+                  .then(res => res.json())
+                  .then(json => {
+                    this.acoes = json;
+                  });
+              }
+          },
+          created() {
+              this.puxarAcoes();
+          },
+      });
+    </script>
+  </body>
+</html>

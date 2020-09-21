@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./vue.js"></script>
+    <title>Vue.JS</title>
+    <style>
+        .azul {
+            color: white;
+            background-color: blue;
+        }
+        .verde{
+            color: white;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+        <a :href="link">Link Google</a>
+        <p :class="comprou ? 'azul' : 'verde'" class="ativo">Texto</p>
+
+    </div>
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                link: "https://www.google.com",
+                comprou: false
+            },
+
+        });
+    </script>
+</body>
+
+</html>
