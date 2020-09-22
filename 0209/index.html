@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./vue.js"></script>
+    <title>Vue.JS</title>
+
+</head>
+
+<body>
+    <div id="app">
+        <p>{{total}}</p>
+        <p>{{contador}}</p>
+        <button @click="contador++">Adicionar</button>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                preco: 59,
+                desconto: 10,
+                contador: 0
+            },
+            computed: {
+                total() {
+                    return this.preco - this.desconto;
+                }
+            },
+            watch: {
+                contador() {
+                    if (this.contador > 10) {
+                        alert(this.contador);
+                    }
+
+                }
+            }
+        },
+
+        );
+    </script>
+</body>
+
+</html>

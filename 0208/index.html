@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./vue.js"></script>
+    <title>Vue.JS</title>
+    
+</head>
+
+<body>
+    <div id="app">
+        <!-- <ul>
+            <li v-for="({nome}, key) in estados">{{nome}}</li>
+        </ul>      -->
+        <ul>
+            <li v-for="item in lista">{{item}}</li>
+        </ul>  
+        <button @click="removerItem">Remover</button>  
+        <button @click="modificarItem">Modiicar</button>        
+    </div>
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: { 
+                estados: {
+                    sp: {
+                        populacao: "45 milhões",
+                        nome: "São Paulo"
+                    },
+                    mg: {
+                        populacao: "21 milhões",
+                        nome: "Minas Gerais"
+                    },
+                    rj: {
+                        populacao: "21 milhões",
+                        nome: "Rio de Janeiro"
+                    }
+                },
+                lista: ["Item 1", "Item 2", "Item 3"]
+            },  
+            methods: {
+                removerItem() {
+                    this.lista.pop();
+                }, 
+                modificarItem() {
+                    this.$set(this.lista, 0, "banana");
+                }
+            },          
+        });
+    </script>
+</body>
+
+</html>
