@@ -1,35 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./vue.js"></script>
     <title>Vue.JS</title>
+  </head>
 
-</head>
-
-<body>
+  <body>
     <div id="app">
-        <p :class="{ativo: estaAtivo}">Mostrar texto</p>
-        <button @click="estaAtivo = !estaAtivo">Esta ativo</button>
+      <componente-local></componente-local>
+      <componente-local2></componente-local2>
     </div>
     <script>
-        const vm = new Vue({
-            el: "#app",
-            data: {
-                cor: 'verde',
-                estaAtivo: false
-            }
-        });
+      const ComponenteLocal = {
+        name: 'ComponentLocal',
+        template: `<p>Component Local</p>`,
+      };
+
+      const ComponenteLocal2 = {
+        name: 'ComponentLocal',
+        template: `
+        <div>
+        <p>Component Local 2</p>
+        <b>Segundo elemento</b>
+        <component-global> </component-global>
+        </div>`,
+      };
+
+      Vue.component('ComponentGlobal', {
+        template: `<p>Isso é global</p>`,
+      });
+
+      const vm = new Vue({
+        el: '#app',
+        data: {
+          mensagem: 'Olá',
+        },
+        components: {
+          ComponenteLocal,
+          ComponenteLocal2,
+        },
+      });
     </script>
-
-    <style>
-        .ativo{
-            color: green;
-            background: grey;
-        }
-    </style>
-</body>
-
+  </body>
 </html>
