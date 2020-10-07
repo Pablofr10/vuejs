@@ -1,8 +1,12 @@
 <template>
   <div>
     <h1>Curso de: {{ curso }}</h1>
+    <router-link to="/cursos/html">HTML</router-link>
+    <router-link to="/cursos/css">CSS</router-link>
 
-    <router-view></router-view>
+    <transition mode="out-in">
+      <router-view :key="curso"></router-view>
+    </transition>
   </div>
 </template>
 
@@ -13,4 +17,14 @@ export default {
 </script>
 
 <style>
+.v-enter,
+.v-leave-to {
+  transform: translate3d(-20px, 0, 0);
+  opacity: 0;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: all 0.3s;
+}
 </style>

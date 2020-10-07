@@ -6,7 +6,9 @@
         >JavaScript</router-link
       >
     </nav>
-    <router-view></router-view>
+    <transition mode="out-in">
+      <router-view :key="root"></router-view>
+    </transition>
   </div>
 </template>
 
@@ -48,5 +50,16 @@ export default {
 }
 .router-link-exact-active {
   background: rgb(65, 15, 15) !important;
+}
+
+.v-enter,
+.v-leave-to {
+  transform: translate3d(-20px, 0, 0);
+  opacity: 0;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: all 0.3s;
 }
 </style>
