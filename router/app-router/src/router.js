@@ -5,6 +5,8 @@ import Cursos from './views/Cursos.vue';
 import Curso from './views/Curso.vue';
 import CursoAulas from './views/CursoAulas.vue';
 import CursoDescricao from './views/CursoDescricao.vue';
+import Acoes from './views/Acoes.vue';
+import AcoesDados from './views/AcoesDados.vue';
 
 Vue.use(Router);
 
@@ -14,6 +16,17 @@ export default new Router({
     {
       path: '/',
       component: Home,
+    },
+    {
+      path: '/acoes',
+      component: Acoes,
+      children: [
+        {
+          path: ':simbolo',
+          component: AcoesDados,
+          props: true,
+        },
+      ],
     },
     {
       path: '/cursos',

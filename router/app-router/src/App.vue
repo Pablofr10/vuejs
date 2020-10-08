@@ -2,21 +2,17 @@
   <div id="app">
     <nav class="nav-links">
       <router-link to="/">Home</router-link>
-      <router-link :to="{ name: 'curso', params: { curso: 'javascript' } }"
-        >JavaScript</router-link
-      >
+      <router-link to="/curso">JavaScript</router-link>
+      <router-link to="/acoes">Ações</router-link>
     </nav>
     <transition mode="out-in">
-      <router-view :key="root"></router-view>
+      <router-view></router-view>
     </transition>
   </div>
 </template>
 
 <script>
-export default {
-  name: "App",
-  components: {},
-};
+export default {};
 </script>
 
 <style>
