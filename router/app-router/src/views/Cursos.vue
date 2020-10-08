@@ -5,7 +5,7 @@
     <router-link to="/cursos/css">CSS</router-link>
 
     <transition mode="out-in">
-      <router-view :key="curso"></router-view>
+      <router-view :key="cursoi"></router-view>
     </transition>
   </div>
 </template>
