@@ -1,12 +1,15 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
-import Cursos from './views/Cursos.vue';
-import Curso from './views/Curso.vue';
-import CursoAulas from './views/CursoAulas.vue';
-import CursoDescricao from './views/CursoDescricao.vue';
-import Acoes from './views/Acoes.vue';
-import AcoesDados from './views/AcoesDados.vue';
+const Cursos = () =>
+  import(/* webpackChunkName: "curso" */ './views/Cursos.vue');
+const Curso = () => import(/* webpackChunkName: "curso" */ './views/Curso.vue');
+const CursoAulas = () =>
+  import(/* webpackChunkName: "curso" */ './views/CursoAulas.vue');
+const CursoDescricao = () =>
+  import(/* webpackChunkName: "curso" */ './views/CursoDescricao.vue');
+const Acoes = () => import('./views/Acoes.vue');
+const AcoesDados = () => import('./views/AcoesDados.vue');
 
 Vue.use(Router);
 
