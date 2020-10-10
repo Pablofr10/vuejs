@@ -7,5 +7,20 @@ export default new Vuex.Store({
   state: {
     user: 'Lobo',
     aulasCompletas: 21,
+    aulasFinalizadas: [],
+    totalHoras: 0,
+  },
+  mutations: {
+    CHANGE_USER(state, novoUser) {
+      state.user = novoUser.user;
+    },
+    COMPLETAR_AULA(state) {
+      state.aulasCompletas++;
+    },
+    ADICIONAR_AULA(state, aula) {
+      state.aulasFinalizadas.push(aula);
+      const teste = state.aulasFinalizadas.map((x) => x.duracao);
+      state.totalHoras = teste.reduce((x, num) => x + num);
+    },
   },
 });
