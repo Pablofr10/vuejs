@@ -6,7 +6,7 @@
     <button @click="COMPLETAR_AULA">Completar Aula</button>
     <input type="text" v-model="novoUser" /> -->
 
-    <ul>
+    <!-- <ul>
       <li v-for="aula in aulas" :key="aula.nome">
         {{ aula.nome }} {{ aula.duracao }} horas
         <button @click="handleClickAula(aula)">Marcar como concluída</button>
@@ -22,12 +22,18 @@
           {{ aulaFinalizada.nome }}
         </li>
       </ul>
-    </div>
+    </div> -->
+
+    <ul>
+      <li v-for="livro in livrosLidos(false)" :key="livro.nome">
+        {{ livro }}
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions, mapGetters } from "vuex";
 
 export default {
   name: "Aula",
@@ -57,6 +63,7 @@ export default {
   },
   computed: {
     ...mapState(["user", "aulasCompletas", "aulasFinalizadas", "totalHoras"]),
+    ...mapGetters(["livrosLidos"]),
     nomeMaiusculo() {
       return this.nome.toUpperCase();
     },
