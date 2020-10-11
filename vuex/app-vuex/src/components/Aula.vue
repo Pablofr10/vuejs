@@ -6,10 +6,10 @@
     <button @click="COMPLETAR_AULA">Completar Aula</button>
     <input type="text" v-model="novoUser" /> -->
 
-    <ul>
+    <!-- <ul>
       <li v-for="aula in aulas" :key="aula.nome">
         {{ aula.nome }} {{ aula.duracao }} horas
-        <button @click="ADICIONAR_AULA(aula)">Marcar como concluída</button>
+        <button @click="handleClickAula(aula)">Marcar como concluída</button>
       </li>
     </ul>
     <div>
@@ -22,12 +22,18 @@
           {{ aulaFinalizada.nome }}
         </li>
       </ul>
-    </div>
+    </div> -->
+
+    <ul>
+      <li v-for="livro in livrosLidos(false)" :key="livro.nome">
+        {{ livro }}
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
-import { mapMutations, mapState } from "vuex";
+import { mapState, mapActions, mapGetters } from "vuex";
 
 export default {
   name: "Aula",
@@ -57,14 +63,18 @@ export default {
   },
   computed: {
     ...mapState(["user", "aulasCompletas", "aulasFinalizadas", "totalHoras"]),
+    ...mapGetters(["livrosLidos"]),
     nomeMaiusculo() {
       return this.nome.toUpperCase();
     },
   },
   methods: {
-    ...mapMutations(["CHANGE_USER", "COMPLETAR_AULA", "ADICIONAR_AULA"]),
+    ...mapActions(["completarAula"]),
     handleClick() {
       this.CHANGE_USER({ user: this.novoUser });
+    },
+    handleClickAula(aula) {
+      this.completarAula(aula);
     },
   },
 };
