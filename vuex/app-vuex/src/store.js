@@ -17,10 +17,13 @@ export default new Vuex.Store({
     COMPLETAR_AULA(state) {
       state.aulasCompletas++;
     },
-    ADICIONAR_AULA(state, aula) {
-      state.aulasFinalizadas.push(aula);
-      const teste = state.aulasFinalizadas.map((x) => x.duracao);
-      state.totalHoras = teste.reduce((x, num) => x + num);
+    ADICIONAR_AULA(state, payload) {
+      state.aulasFinalizadas.push(payload);
+    },
+  },
+  actions: {
+    completarAula(context, payload) {
+      context.commit('ADICIONAR_AULA', payload);
     },
   },
 });
